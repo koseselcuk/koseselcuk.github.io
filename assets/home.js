@@ -16,7 +16,7 @@
   if(gc){
     const phdHTML = S.phd.map(p => `
       <div class="person">
-        <div class="avatar">${p.i}<img class="flag" src="https://flagcdn.com/w40/${p.fl}.png" alt="${p.fln}"/></div>
+        <div class="avatar${p.ph ? ' has-photo' : ''}">${p.ph ? `<img class="ph" src="${p.ph}" alt="${p.n}"/>` : p.i}<img class="flag" src="https://flagcdn.com/w40/${p.fl}.png" alt="${p.fln}"/></div>
         <h4>${p.n}</h4>
         <div class="role">${p.r}</div>
         <div class="focus">${p.f}</div>
@@ -63,7 +63,6 @@
     const edgesG = svg.querySelector('#edges');
     const nodesG = svg.querySelector('#nodes');
 
-    // Build all edges (unique pairs)
     const edgeSet = new Set();
     nodes.forEach(a => {
       const det = S.thrustDetail[a.id];
@@ -103,7 +102,6 @@
       txt.setAttribute('text-anchor','middle');
       txt.setAttribute('dominant-baseline','central');
       txt.setAttribute('class','node-label');
-      // wrap labels
       const parts = n.label.split(' ');
       if(parts.length > 1){
         const mid = Math.ceil(parts.length/2);
@@ -127,20 +125,16 @@
     const ddList  = document.getElementById('ddList');
 
     function activate(id){
-      // reset
       svg.querySelectorAll('.node-circle').forEach(c => c.classList.remove('active'));
       svg.querySelectorAll('.edge').forEach(e => e.classList.remove('lit'));
-      // light node
       const g = svg.querySelector(`.node[data-id="${id}"] .node-circle`);
       g.classList.add('active');
-      // light adjacent edges
       const det = S.thrustDetail[id];
       det.edges.forEach(e => {
         const key = [id, e.to].sort().join('-');
         const line = svg.querySelector(`.edge[data-edge="${key}"]`);
         if(line) line.classList.add('lit');
       });
-      // update detail panel
       ddTitle.innerHTML = `${det.title} <i>×</i> the rest`;
       ddDesc.textContent = det.desc;
       ddList.innerHTML = det.edges.map(e => `
