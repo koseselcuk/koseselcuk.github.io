@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en" data-page="join">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Join the Group · Köse Group</title>
+<meta name="description" content="The Köse Research Group at the University of Rochester is recruiting PhD students. What we look for, what a PhD here looks like, and what to send in your email." />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23003B71'/%3E%3Ctext x='50' y='76' font-family='Georgia,serif' font-style='italic' font-size='78' fill='white' text-anchor='middle'%3EK%3C/text%3E%3Crect y='90' width='100' height='10' fill='%23FFD100'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/theme.js"></script>
+<style>
+.callout{
+  border:1px solid var(--ink); background:var(--paper);
+  padding:32px;
+  display:grid; gap:24px;
+  grid-template-columns:1fr;
+  margin-bottom:48px;
+}
+@media(min-width:760px){ .callout{ grid-template-columns:auto 1fr; align-items:start } }
+.callout h3{ font-family:var(--serif); font-weight:400; font-size:32px; line-height:1.1; margin:0; max-width:9ch }
+.callout h3 .mark{ background:linear-gradient(transparent 70%, var(--accent-y) 70%); padding:0 .15em }
+.callout p{ font-size:16px; line-height:1.6; color:var(--ink-2); margin:0; max-width:58ch }
+
+.steps{
+  display:grid; gap:0;
+  grid-template-columns:1fr;
+  border:1px solid var(--hair);
+  background:#fdfcf8;
+}
+@media(min-width:760px){ .steps{ grid-template-columns:repeat(4,1fr) } }
+.step{
+  padding:24px;
+  border-right:1px solid var(--hair); border-bottom:1px solid var(--hair);
+  display:flex; flex-direction:column; gap:8px;
+}
+.step .n{ font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent) }
+.step h4{ font-family:var(--serif); font-weight:400; font-size:22px; margin:0; line-height:1.2 }
+.step p{ font-size:13.5px; color:var(--ink-2); line-height:1.55; margin:0 }
+
+.timeline{
+  display:grid; gap:0;
+  grid-template-columns:1fr;
+  border-top:1px solid var(--ink);
+  margin-top:8px;
+}
+.tl-row{
+  display:grid;
+  grid-template-columns: 130px 1fr;
+  gap:24px;
+  padding:18px 0;
+  border-bottom:1px solid var(--hair);
+  align-items:baseline;
+}
+.tl-row .yr{ font-family:var(--mono); font-size:13px; color:var(--muted); letter-spacing:.06em }
+.tl-row .nm{ font-family:var(--serif); font-size:18px; line-height:1.4 }
+.tl-row .nm .sub{ display:block; font-family:var(--sans); font-size:13.5px; color:var(--ink-2); margin-top:4px }
+
+.faq{ border-top:1px solid var(--ink); margin-top:8px }
+.faq details{
+  border-bottom:1px solid var(--hair);
+  padding:18px 0;
+}
+.faq summary{
+  cursor:pointer; list-style:none;
+  font-family:var(--serif); font-size:21px; line-height:1.3;
+  display:flex; align-items:baseline; justify-content:space-between; gap:24px;
+  transition:color .2s;
+}
+.faq summary::-webkit-details-marker{ display:none }
+.faq summary::after{
+  content:"+"; font-family:var(--mono); font-size:18px; color:var(--muted);
+  transition:transform .2s;
+}
+.faq details[open] summary::after{ content:"–" }
+.faq summary:hover{ color:var(--accent) }
+.faq .answer{ font-size:15.5px; line-height:1.6; color:var(--ink-2); margin:12px 0 0; max-width:65ch }
+
+.dont-do{
+  display:grid; gap:14px;
+  grid-template-columns:1fr;
+  margin-top:18px;
+}
+@media(min-width:760px){ .dont-do{ grid-template-columns:1fr 1fr; gap:24px } }
+.col-h{ font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; margin:0 0 12px }
+.col-h.good{ color:#1a6b3a }
+.col-h.bad{ color:#9b2a2a }
+.dont-do ul{ list-style:none; padding:0; margin:0 }
+.dont-do li{
+  display:grid; grid-template-columns:18px 1fr; gap:10px;
+  padding:6px 0; font-size:14.5px; line-height:1.5;
+}
+.dont-do .ix{ font-family:var(--mono); font-size:13px; color:var(--muted) }
+.dont-do .good .ix{ color:#1a6b3a }
+.dont-do .bad .ix{ color:#9b2a2a }
+</style>
+</head>
+<body>
+
+<div data-chrome="nav" data-base=""></div>
+
+<section class="page-head">
+  <div class="wrap reveal">
+    <div class="crumbs"><a href="index.html">Home</a> &nbsp;/&nbsp; <span style="color:var(--ink)">Join the group</span></div>
+    <h1>Join the <i>group.</i></h1>
+    <p class="lede">We are actively recruiting PhD students across all five thrusts. Here's what we look for, what a PhD with us looks like, and what to send.</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+
+    <div class="callout">
+      <h3>Recruiting <span class="mark">Fall 2026</span></h3>
+      <p>Strong backgrounds in VLSI circuit design, computer architecture, applied physics, or cryptographic systems are particularly relevant. We are especially interested in students who want to work at the intersection of two thrusts — hardware security plus superconducting electronics, or CMOS Ising plus power delivery, for example.</p>
+    </div>
+
+    <h2 style="font-family:var(--serif); font-weight:400; font-size:clamp(28px,3.5vw,40px); line-height:1.1; margin:0 0 24px">How to <i style="color:var(--accent)">apply</i></h2>
+
+    <div class="steps">
+      <div class="step">
+        <div class="n">Step 01</div>
+        <h4>Apply to the program</h4>
+        <p>Submit a formal application to the <a class="link" href="https://www.hajim.rochester.edu/ece/graduate/" target="_blank" rel="noopener">University of Rochester ECE PhD program</a>. December deadline for the following Fall.</p>
+      </div>
+      <div class="step">
+        <div class="n">Step 02</div>
+        <h4>Email us directly</h4>
+        <p>Send a brief email to <a class="link" href="mailto:selcuk.kose@rochester.edu">selcuk.kose@rochester.edu</a> describing your research interests, with a CV and a list of relevant coursework.</p>
+      </div>
+      <div class="step">
+        <div class="n">Step 03</div>
+        <h4>Read two papers</h4>
+        <p>Pick two recent group papers that you found interesting and mention them in your email — what surprised you, what you'd extend, what you didn't follow.</p>
+      </div>
+      <div class="step">
+        <div class="n">Step 04</div>
+        <h4>We meet</h4>
+        <p>Short virtual chat with Prof. Köse, then conversations with current group members. We try to give every applicant a fair, fast answer.</p>
+      </div>
+    </div>
+
+    <h2 style="font-family:var(--serif); font-weight:400; font-size:clamp(28px,3.5vw,40px); line-height:1.1; margin:56px 0 16px">A good first email <i style="color:var(--accent)">includes</i></h2>
+
+    <div class="dont-do">
+      <div class="good">
+        <h5 class="col-h good">↑ Do include</h5>
+        <ul>
+          <li><span class="ix">✓</span><span>Which one or two thrusts you want to work on — and why those specifically.</span></li>
+          <li><span class="ix">✓</span><span>Two group papers you read, with a paragraph of honest reaction.</span></li>
+          <li><span class="ix">✓</span><span>Hands-on experience: tape-outs, FPGA projects, Cadence/Synopsys, measurement lab time.</span></li>
+          <li><span class="ix">✓</span><span>A short list of relevant coursework and grades.</span></li>
+          <li><span class="ix">✓</span><span>A CV with publications, projects, and references.</span></li>
+        </ul>
+      </div>
+      <div class="bad">
+        <h5 class="col-h bad">↓ Don't include</h5>
+        <ul>
+          <li><span class="ix">✗</span><span>Generic templates addressed to "Dear Professor" that don't mention the group.</span></li>
+          <li><span class="ix">✗</span><span>Long descriptions of your undergraduate program — your transcript already covers it.</span></li>
+          <li><span class="ix">✗</span><span>Lists of every paper you've ever read; pick two and go deep.</span></li>
+          <li><span class="ix">✗</span><span>Requests for an immediate admission decision over email.</span></li>
+          <li><span class="ix">✗</span><span>AI-generated cover letters; we can tell, and so can the rest of the field.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 style="font-family:var(--serif); font-weight:400; font-size:clamp(28px,3.5vw,40px); line-height:1.1; margin:56px 0 16px">What a PhD here <i style="color:var(--accent)">looks like</i></h2>
+
+    <div class="timeline">
+      <div class="tl-row">
+        <div class="yr">Year 1</div>
+        <div class="nm">Coursework and first project<span class="sub">ECE core courses, advanced topics in your thrust, weekly group meetings, and a small first project that becomes a workshop paper.</span></div>
+      </div>
+      <div class="tl-row">
+        <div class="yr">Year 2</div>
+        <div class="nm">Qualifying exam, first conference paper<span class="sub">By end of Y2 most students have a first-author paper in a prestigious conference or journal. You also pick a depth area for your thesis.</span></div>
+      </div>
+      <div class="tl-row">
+        <div class="yr">Years 3–4</div>
+        <div class="nm">Thesis arc, tape-outs, internships<span class="sub">A 2-3 paper arc that defines your thesis. Most students complete a summer industry internship at Intel, Qualcomm, IBM, NVIDIA, or a national lab.</span></div>
+      </div>
+      <div class="tl-row">
+        <div class="yr">Year 5</div>
+        <div class="nm">Defense, placement<span class="sub">Defense in spring. Alumni have gone to Qualcomm, Intel, Cirrus Logic, Sandia, Shandong University, and Embry-Riddle as faculty.</span></div>
+      </div>
+    </div>
+
+    <h2 style="font-family:var(--serif); font-weight:400; font-size:clamp(28px,3.5vw,40px); line-height:1.1; margin:56px 0 16px">Frequently <i style="color:var(--accent)">asked</i></h2>
+
+    <div class="faq">
+      <details>
+        <summary>Is funding guaranteed?</summary>
+        <p class="answer">Funding is guaranteed for the first year through a research or teaching assistantship that covers tuition, stipend, and health insurance. Continued funding in subsequent years depends on academic progress, project fit, and the availability of grants, assistantships, or fellowships. In practice, students in good standing have continuous support through completion.</p>
+      </details>
+      <details>
+        <summary>Do you take Master's students into the group?</summary>
+        <p class="answer">Master's students at Rochester are welcome to do a thesis with us if there is a project match, and several of our MS alumni have gone on to strong industry roles or to PhDs elsewhere. We do not typically advise non-thesis MS students.</p>
+      </details>
+      <details>
+        <summary>I am a Rochester undergraduate. Can I do research with you?</summary>
+        <p class="answer">Yes — please email Prof. Köse directly with your coursework and a sentence on which thrust interests you. We particularly welcome undergraduates who can commit at least two semesters; strong undergraduate researchers may have the opportunity to co-author a publication and, in some cases, continue with the group as a PhD student.</p>
+      </details>
+      <details>
+        <summary>How many students do you admit each year?</summary>
+        <p class="answer">Typically one PhD student per year, though this depends on funding, project fit, and the current size of the group. We keep the group small enough that every student gets weekly one-on-one advising and direct access to industry collaborations.</p>
+      </details>
+      <details>
+        <summary>What if my background is in physics or CS rather than ECE?</summary>
+        <p class="answer">Physics backgrounds are an excellent fit for the superconducting and quantum thrusts; CS systems and security backgrounds are a great fit for hardware security and Ising machines. We will help you fill in the EE coursework you need in your first year.</p>
+      </details>
+      <details>
+        <summary>Do you accept remote / part-time students?</summary>
+        <p class="answer">No.</p>
+      </details>
+    </div>
+
+  </div>
+</section>
+
+<div data-chrome="footer" data-base=""></div>
+
+<script src="assets/data.js"></script>
+<script src="assets/chrome.js"></script>
+</body>
+</html>

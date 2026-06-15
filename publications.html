@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en" data-page="publications">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Publications · Köse Group</title>
+<meta name="description" content="Publications, patents, and books from the Köse Research Group at the University of Rochester. Filter by year, thrust, and venue." />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23003B71'/%3E%3Ctext x='50' y='76' font-family='Georgia,serif' font-style='italic' font-size='78' fill='white' text-anchor='middle'%3EK%3C/text%3E%3Crect y='90' width='100' height='10' fill='%23FFD100'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/theme.js"></script>
+<style>
+.stats{
+  display:grid; gap:0;
+  grid-template-columns:repeat(2, 1fr);
+  border:1px solid var(--hair); background:#fdfcf8;
+  margin-bottom:48px;
+}
+@media(min-width:680px){ .stats{ grid-template-columns:repeat(5,1fr) } }
+.stat{
+  padding:24px; text-align:center;
+  border-right:1px solid var(--hair); border-bottom:1px solid var(--hair);
+}
+.stat .n{ font-family:var(--serif); font-size:42px; line-height:1; color:var(--ink) }
+.stat .l{ font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin-top:8px }
+
+.filter-bar{
+  position:sticky; top:64px; z-index:5;
+  background:color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter:saturate(140%) blur(10px);
+  border-top:1px solid var(--hair); border-bottom:1px solid var(--hair);
+  padding:16px 0;
+  margin:0 0 32px;
+}
+.filter-row{
+  display:flex; flex-wrap:wrap; gap:18px 24px; align-items:center;
+}
+.filter-group{ display:flex; flex-wrap:wrap; gap:6px; align-items:center }
+.filter-label{
+  font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--muted); margin-right:4px;
+}
+.fchip{
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase;
+  padding:6px 10px; border:1px solid var(--hair); color:var(--ink-2); background:#fdfcf8;
+  border-radius:2px; cursor:pointer; transition:all .15s;
+  user-select:none;
+}
+.fchip:hover{ border-color:var(--ink); color:var(--ink) }
+.fchip.active{ background:var(--ink); color:var(--paper); border-color:var(--ink) }
+.fchip.acc.active{ background:var(--accent); border-color:var(--accent) }
+
+.pub-row{
+  display:grid; grid-template-columns: 80px 1fr auto; gap:24px;
+  padding:22px 0; border-bottom:1px solid var(--hair); align-items:baseline;
+  transition:padding .2s, background .2s;
+  cursor:pointer;
+}
+.pub-row:hover{ padding-left:8px }
+.pub-row .yr{ font-family:var(--mono); font-size:13px; color:var(--muted); letter-spacing:.04em }
+.pub-row .ttl{ font-family:var(--serif); font-size:21px; line-height:1.3 }
+.pub-row .ttl .au{ display:block; font-family:var(--sans); font-size:13.5px; color:var(--ink-2); margin-top:6px; line-height:1.5 }
+.pub-row .ttl .thr{ display:flex; flex-wrap:wrap; gap:6px; margin-top:10px }
+.pub-row .ttl .thr .ch{ font-family:var(--mono); font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; padding:3px 7px; border:1px solid var(--hair); color:var(--muted); border-radius:2px }
+.pub-row .ven{ font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); white-space:nowrap; text-align:right }
+@media(max-width:680px){
+  .pub-row{ grid-template-columns: 60px 1fr }
+  .pub-row .ven{ grid-column:2; margin-top:6px; text-align:left }
+}
+.bibtex{
+  grid-column:1 / -1;
+  margin-top:16px; padding:16px;
+  background:#0c0c10; color:#eceae3;
+  font-family:var(--mono); font-size:11.5px; line-height:1.6;
+  white-space:pre-wrap; word-break:break-word;
+  border:1px solid var(--dark-hair); border-radius:2px;
+  display:none;
+}
+.pub-row.open .bibtex{ display:block }
+.copy-btn{
+  font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase;
+  background:transparent; color:#bdbcb4; border:1px solid var(--dark-hair); padding:6px 10px;
+  cursor:pointer; margin-top:12px; transition:all .15s;
+}
+.copy-btn:hover{ background:var(--accent); color:var(--paper); border-color:var(--accent) }
+.pubs-empty{
+  padding:48px 0; text-align:center; font-family:var(--mono); color:var(--muted);
+  font-size:12px; letter-spacing:.1em;
+}
+.result-count{
+  font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--muted);
+  margin:0 0 14px;
+}
+</style>
+</head>
+<body>
+
+<div data-chrome="nav" data-base=""></div>
+
+<section class="page-head">
+  <div class="wrap reveal">
+    <div class="crumbs"><a href="index.html">Home</a> &nbsp;/&nbsp; <span style="color:var(--ink)">Publications</span></div>
+    <h1>Publications<br/><i>& patents.</i></h1>
+    <p class="lede">The complete list of published journal and conference papers — filter by year, thrust, or venue. Click any row for BibTeX.</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+
+    <div class="stats">
+      <div class="stat"><div class="n">120+</div><div class="l">Papers</div></div>
+      <div class="stat"><div class="n">23</div><div class="l">US patents</div></div>
+      <div class="stat"><div class="n">2</div><div class="l">Books</div></div>
+      <div class="stat"><div class="n">3</div><div class="l">Book chapters</div></div>
+      <div class="stat"><div class="n">60 · 66</div><div class="l">Journal · Conference</div></div>
+    </div>
+
+    <div class="filter-bar">
+      <div class="wrap" style="padding:0">
+        <div class="filter-row">
+          <div class="filter-group">
+            <span class="filter-label">Thrust</span>
+            <button class="fchip acc active" data-filter="thrust" data-val="all">All</button>
+            <button class="fchip acc" data-filter="thrust" data-val="hwsec">Hardware Sec.</button>
+            <button class="fchip acc" data-filter="thrust" data-val="power">Power</button>
+            <button class="fchip acc" data-filter="thrust" data-val="super">Superconducting</button>
+            <button class="fchip acc" data-filter="thrust" data-val="ising">Ising</button>
+            <button class="fchip acc" data-filter="thrust" data-val="quant">Quantum</button>
+          </div>
+          <div class="filter-group">
+            <span class="filter-label">Year</span>
+            <button class="fchip active" data-filter="year" data-val="all">All</button>
+            <button class="fchip" data-filter="year" data-val="2026">2026</button>
+            <button class="fchip" data-filter="year" data-val="2025">2025</button>
+            <button class="fchip" data-filter="year" data-val="2024">2024</button>
+            <button class="fchip" data-filter="year" data-val="2023">2023</button>
+            <button class="fchip" data-filter="year" data-val="2022">≤ 2022</button>
+          </div>
+          <div class="filter-group">
+            <span class="filter-label">Type</span>
+            <button class="fchip active" data-filter="kind" data-val="all">All</button>
+            <button class="fchip" data-filter="kind" data-val="journal">Journal</button>
+            <button class="fchip" data-filter="kind" data-val="conference">Conference</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="result-count" id="resultCount"></p>
+    <div class="pubs" id="pubList" style="border-top:1px solid var(--ink)"></div>
+
+    <p style="margin-top:48px; font-family:var(--mono); font-size:12px; color:var(--muted); line-height:1.7">
+      Full bibliography on <a class="link" href="https://scholar.google.com/citations?user=mcHzKYYAAAAJ" target="_blank" rel="noopener">Google Scholar</a> and <a class="link" href="https://dblp.org/pid/89/3319.html" target="_blank" rel="noopener">DBLP</a>. Patents available on request — see <a class="link" href="assets/selcuk_kose_cv.pdf" target="_blank" rel="noopener">CV (PDF)</a> for the complete list.
+    </p>
+  </div>
+</section>
+
+<div data-chrome="footer" data-base=""></div>
+
+<script src="assets/data.js"></script>
+<script src="assets/chrome.js"></script>
+<script src="assets/publications.js"></script>
+</body>
+</html>

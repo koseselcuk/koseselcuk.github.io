@@ -1,0 +1,713 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Selçuk Köse · University of Rochester</title>
+<meta name="description" content="Selçuk Köse, Professor and Chair of Electrical and Computer Engineering at the University of Rochester. Hardware security, on-chip power delivery, superconducting electronics, CMOS Ising machines, and quantum computing." />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23003B71'/%3E%3Ctext x='50' y='76' font-family='Georgia,serif' font-style='italic' font-size='78' fill='white' text-anchor='middle'%3EK%3C/text%3E%3Crect y='90' width='100' height='10' fill='%23FFD100'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/theme.js"></script>
+
+<style>
+/* HERO */
+.hero{ padding:clamp(72px,11vw,140px) 0 clamp(56px,7vw,90px) }
+.hero-grid{ display:grid; grid-template-columns:1fr; gap:clamp(32px,5vw,56px) }
+@media(min-width:900px){ .hero-grid{ grid-template-columns: 1.45fr .85fr; align-items:end } }
+.hero h1{
+  font-family:var(--serif); font-weight:400;
+  font-size:clamp(52px, 9.5vw, 132px);
+  line-height:.92; letter-spacing:-.02em;
+  margin:0 0 24px;
+}
+.hero h1 .it{
+  font-style:italic; color:var(--accent);
+}
+.hero .tag{
+  font-family:var(--serif); font-style:italic;
+  font-size:clamp(20px,2.4vw,30px); line-height:1.3;
+  color:var(--ink-2); margin:0 0 28px; max-width:34ch;
+}
+.hero p.lead{ font-size:clamp(16px,1.5vw,18px); line-height:1.55; max-width:48ch; color:var(--ink-2); margin:0 }
+.aside{ display:grid; gap:18px }
+.portrait{
+  aspect-ratio:4/5; background:#e7e3d4;
+  border:1px solid var(--hair);
+  background-image:url("assets/selcuk_kose.jpg");
+  background-size:cover; background-position:center 20%;
+  filter:saturate(.92) contrast(1.02);
+  position:relative;
+}
+.portrait::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,0) 70%, rgba(0,0,0,.08));
+  pointer-events:none;
+}
+.meta-card{
+  border:1px solid var(--hair); background:#fdfcf8;
+  padding:20px;
+  font-family:var(--mono); font-size:11.5px; line-height:1.85; letter-spacing:.02em;
+}
+.meta-card .r{ display:flex; gap:14px; align-items:baseline }
+.meta-card .k{ color:var(--muted); min-width:64px; text-transform:uppercase; font-size:9.5px; letter-spacing:.16em }
+.meta-card .v{ color:var(--ink) }
+.meta-card a:hover{ color:var(--accent) }
+
+.hero-foot{
+  margin-top:clamp(48px,7vw,80px);
+  display:flex; flex-wrap:wrap; gap:14px 32px;
+  font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--muted);
+  border-top:1px solid var(--hair); padding-top:22px;
+}
+.hero-foot span b{ color:var(--ink); font-weight:500 }
+
+/* News ticker strip */
+.ticker{
+  border-top:1px solid var(--hair);
+  border-bottom:1px solid var(--hair);
+  background:#fdfcf8;
+  overflow:hidden; position:relative;
+}
+.ticker-row{
+  display:flex; align-items:center; gap:32px;
+  font-family:var(--mono); font-size:12px; letter-spacing:.04em;
+  padding:14px 0;
+  white-space:nowrap;
+  animation: ticker 60s linear infinite;
+}
+.ticker-row:hover{ animation-play-state:paused }
+.ticker-item{ display:inline-flex; align-items:center; gap:14px }
+.ticker-item .d{ color:var(--muted); letter-spacing:.1em }
+.ticker-item .t{ color:var(--ink) }
+.ticker-item .t b{ color:var(--accent); font-weight:500 }
+.ticker-item::after{
+  content:"●"; color:var(--accent-y); margin-left:32px; font-size:10px;
+}
+@keyframes ticker{
+  from{ transform:translateX(0) }
+  to{ transform:translateX(-50%) }
+}
+.ticker-label{
+  position:absolute; left:0; top:0; bottom:0;
+  display:flex; align-items:center;
+  padding:0 16px 0 var(--pad);
+  background:linear-gradient(90deg, var(--paper) 60%, transparent);
+  font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--accent); z-index:2;
+}
+
+/* RESEARCH (DARK — UR Blue) */
+.research{
+  background:#003B71; color:var(--dark-ink);
+  border-top:1px solid var(--dark-hair) !important;
+  --dark-hair: rgba(255,255,255,.14);
+  --dark-mute: #9fb1c8;
+  --accent-dark: #FFD100;
+}
+.research::before{
+  content:""; position:absolute; inset:0;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size:64px 64px;
+  pointer-events:none;
+  mask-image:radial-gradient(ellipse at center, black 30%, transparent 80%);
+}
+.research .eyebrow{ color:var(--dark-mute) }
+.research h2{
+  font-family:var(--serif); font-weight:400;
+  font-size:clamp(36px,5vw,64px); line-height:1.05; letter-spacing:-.01em;
+  margin:14px 0 56px; max-width:24ch;
+}
+.research h2 i{ color:var(--accent-dark); font-style:italic }
+
+.thrusts{
+  display:grid; grid-template-columns:1fr; gap:0;
+  border-top:1px solid var(--dark-hair);
+}
+@media(min-width:760px){ .thrusts{ grid-template-columns:1fr 1fr } }
+.thrust{
+  padding:36px 0; border-bottom:1px solid var(--dark-hair);
+  display:grid; grid-template-columns: 56px 1fr; gap:24px; align-items:start;
+  color:var(--dark-ink);
+}
+@media(min-width:760px){
+  .thrust{ padding:40px 36px }
+  .thrust:nth-child(odd){ border-right:1px solid var(--dark-hair) }
+  .thrust.span{ grid-column:span 2; border-right:none }
+}
+.thrust .num{ font-family:var(--mono); color:var(--accent-dark); font-size:12px; letter-spacing:.1em }
+.thrust h3{ font-family:var(--serif); font-weight:400; font-size:28px; line-height:1.1; margin:0 0 12px }
+.thrust p{ color:#cfd9e6; font-size:14.5px; line-height:1.6; margin:0 0 14px }
+.tagsd{ display:flex; flex-wrap:wrap; gap:6px }
+.tagsd .ch{
+  font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase;
+  padding:4px 8px; border:1px solid var(--dark-hair); color:var(--dark-mute);
+  border-radius:2px;
+}
+
+/* CONNECTIONS DIAGRAM */
+.connections{ background:#fdfcf8 }
+.diag-wrap{
+  border:1px solid var(--hair);
+  background:var(--paper);
+  padding:clamp(20px,3vw,40px);
+  display:grid;
+  grid-template-columns:1fr;
+  gap:32px;
+}
+@media(min-width:900px){ .diag-wrap{ grid-template-columns: 1.4fr 1fr; gap:48px } }
+.diag-svg{ width:100%; aspect-ratio: 1.15/1; max-width:560px; margin:0 auto; display:block }
+.node-circle{ fill:#fdfcf8; stroke:var(--ink); stroke-width:1.2; cursor:pointer; transition:fill .2s, stroke .2s }
+.node-circle:hover, .node-circle.active{ fill:var(--accent-y); stroke:var(--ink); stroke-width:1.4 }
+.node-label{ font-family:var(--mono); font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; fill:var(--ink); pointer-events:none; transition:fill .2s }
+.edge{ stroke:var(--ink); stroke-width:.8; opacity:.18; transition:opacity .2s, stroke .2s; fill:none }
+.edge.lit{ opacity:1; stroke:var(--accent-y); stroke-width:1.8 }
+
+.diag-detail h3{
+  font-family:var(--serif); font-weight:400;
+  font-size:28px; line-height:1.15; margin:0 0 12px;
+}
+.diag-detail h3 i{ color:var(--accent); font-style:italic }
+.diag-detail p{ font-size:15px; line-height:1.6; color:var(--ink-2); margin:0 0 16px }
+.diag-detail .hint{
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--muted); border-top:1px dotted var(--hair); padding-top:16px;
+}
+.diag-detail ul{ list-style:none; padding:0; margin:0 0 16px }
+.diag-detail ul li{
+  font-family:var(--mono); font-size:12px; padding:6px 0; border-bottom:1px dotted var(--hair);
+  display:flex; justify-content:space-between; gap:14px;
+}
+.diag-detail ul li .v{ color:var(--muted); letter-spacing:.06em }
+
+/* SECTION CTAs */
+.cta-row{
+  display:grid; gap:14px;
+  grid-template-columns:1fr;
+  margin-top:36px;
+}
+@media(min-width:680px){ .cta-row{ grid-template-columns:repeat(3,1fr) } }
+.cta-card{
+  border:1px solid var(--hair); background:#fdfcf8;
+  padding:24px;
+  display:flex; flex-direction:column; gap:10px;
+  transition:border-color .2s, background .2s;
+}
+.cta-card:hover{ border-color:var(--ink); background:var(--paper) }
+.cta-card .k{ font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent) }
+.cta-card h4{ font-family:var(--serif); font-weight:400; font-size:24px; margin:0; line-height:1.15 }
+.cta-card p{ font-size:13.5px; color:var(--ink-2); margin:0; line-height:1.55 }
+.cta-card .more{
+  margin-top:auto; padding-top:14px;
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ink);
+}
+.cta-card .more::after{ content:" →" }
+
+/* ============================================================
+   LIVE HERO — Coupled Spin Network (Ising). Shown when data-theme="live".
+   ============================================================ */
+.hero-live{ display:none }
+html[data-theme="live"] .hero#top{ display:none }
+html[data-theme="live"] .hero-live{
+  display:flex; align-items:center;
+  position:relative; overflow:hidden;
+  min-height:clamp(580px, 82vh, 880px);
+  background:#0b0c10; color:#fff;
+  border-top:0 !important;
+  padding:0;
+}
+.hero-live canvas{ position:absolute; inset:0; width:100%; height:100%; display:block; z-index:0 }
+.hero-live .lh-scrim{
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  background:linear-gradient(90deg, rgba(11,12,16,.96) 0%, rgba(11,12,16,.78) 32%, rgba(11,12,16,.22) 60%, transparent 84%);
+}
+@media(max-width:760px){
+  .hero-live .lh-scrim{ background:linear-gradient(180deg, rgba(11,12,16,.55) 0%, rgba(11,12,16,.86) 46%, rgba(11,12,16,.97) 100%) }
+}
+.hero-live .lh-status{
+  position:absolute; top:24px; right:var(--pad); z-index:3;
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--accent-y); display:flex; align-items:center; gap:9px;
+}
+.hero-live .lh-status::before{
+  content:""; width:7px; height:7px; border-radius:50%; background:var(--accent-y);
+  box-shadow:0 0 10px var(--accent-y); animation:lhBlink 1.5s ease-in-out infinite;
+}
+@keyframes lhBlink{ 0%,100%{opacity:1} 50%{opacity:.28} }
+.hero-live .lh-content{
+  position:relative; z-index:3;
+  max-width:var(--max); width:100%; margin:0 auto; padding:0 var(--pad);
+}
+.hero-live .lh-eyebrow{
+  font-family:var(--mono); font-size:12px; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--accent-y); margin-bottom:24px; display:flex; align-items:center; gap:14px;
+}
+.hero-live .lh-eyebrow::before{ content:""; width:32px; height:1px; background:var(--accent-y) }
+.hero-live h1{
+  font-family:var(--sans); font-weight:300;
+  font-size:clamp(56px, 11vw, 132px); line-height:.88; letter-spacing:-.035em;
+  margin:0 0 26px; color:#fff;
+}
+.hero-live h1 em{ font-style:normal; font-weight:300; color:var(--accent-y) }
+.hero-live .lh-lead{
+  font-family:var(--sans); font-weight:300;
+  font-size:clamp(19px,2.1vw,24px); line-height:1.5; color:#c6cad1; max-width:34ch; margin:0;
+}
+.hero-live .lh-role{
+  font-family:var(--mono); font-size:11.5px; letter-spacing:.04em; color:#9aa3ac;
+  margin:30px 0 0; padding-top:22px; border-top:1px solid rgba(255,255,255,.12);
+  max-width:48ch; line-height:1.9;
+}
+.hero-live .lh-readout{
+  position:absolute; right:var(--pad); bottom:38px; z-index:3;
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase;
+  color:rgba(238,240,244,.55); text-align:right; line-height:2;
+}
+.hero-live .lh-readout b{ color:#eef0f4; font-weight:500 }
+.hero-live .lh-readout .e{ color:var(--accent-y) }
+.hero-live .lh-legend{
+  position:absolute; left:var(--pad); bottom:38px; z-index:3;
+  display:flex; gap:22px; flex-wrap:wrap;
+  font-family:var(--mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase;
+  color:rgba(238,240,244,.6);
+}
+.hero-live .lh-legend span{ display:flex; align-items:center; gap:7px }
+.hero-live .lh-legend i{ width:16px; height:2px; display:inline-block }
+@media(max-width:760px){
+  .hero-live .lh-readout{ display:none }
+  .hero-live .lh-legend{ position:static; margin-top:28px; padding:0 }
+  html[data-theme="live"] .hero-live{ align-items:flex-end; padding-bottom:48px; min-height:clamp(520px,76vh,720px) }
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap row">
+    <a href="index.html" class="brand">Selçuk <i>Köse</i></a>
+    <button class="nav-toggle" aria-label="menu">Menu</button>
+    <ul>
+      <li><a href="#research">Research</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+      <li><a href="#group">Group</a></li>
+      <li><a href="join.html">Join</a></li>
+      <li><a href="press.html">Talks</a></li>
+      <li><a href="#bio">Bio · CV</a></li>
+    </ul>
+  </div>
+</header>
+
+<section class="hero-live" id="heroLiveSec" data-screen-label="Live hero" aria-label="Live Ising-solver hero">
+  <canvas id="heroLiveCanvas" aria-hidden="true"></canvas>
+  <div class="lh-scrim"></div>
+  <div class="lh-status">Live · Ising solver</div>
+  <div class="lh-content">
+    <div class="lh-eyebrow">Professor &amp; Chair · ECE</div>
+    <h1>Selçuk<br/><em>Köse</em></h1>
+    <p class="lh-lead">Hardware that computes with physics — and is secure by design.</p>
+    <p class="lh-role">Hardware security · on-chip power delivery · superconducting electronics · CMOS Ising machines · quantum interfaces</p>
+  </div>
+  <div class="lh-readout" aria-hidden="true">
+    <div>Spins <b id="lvNodes">46</b></div>
+    <div>Frustrated <b id="lvFrustrated">0</b></div>
+    <div>Energy/edge <b class="e" id="lvEnergy">−0.000</b></div>
+  </div>
+  <div class="lh-legend" aria-hidden="true">
+    <span><i style="background:#f4b942"></i>Ferromagnetic J&gt;0</span>
+    <span><i style="background:#5fd2e6"></i>Antiferromagnetic J&lt;0</span>
+  </div>
+</section>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="reveal">
+        <div class="eyebrow">Professor &amp; Chair · Electrical &amp; Computer Engineering</div>
+        <h1>Selçuk<br/><span class="it">Köse</span></h1>
+        <p class="tag">Energy-efficient circuits, secure hardware, cryogenic electronics, physics-based computation.</p>
+        <p class="lead">We are the Köse Research Group at the University of Rochester, designing energy-efficient, secure, and physics-inspired hardware. Our work spans hardware security, on-chip power delivery, superconducting electronics, CMOS Ising machines, and quantum computing.</p>
+      </div>
+
+      <aside class="aside reveal">
+        <div class="portrait" role="img" aria-label="Portrait of Selçuk Köse"></div>
+        <div class="meta-card">
+          <div class="r"><span class="k">Title</span><span class="v">Professor &amp; Chair, ECE</span></div>
+          <div class="r"><span class="k">School</span><span class="v">Hajim School of Eng.</span></div>
+          <div class="r"><span class="k">Univ.</span><span class="v">University of Rochester</span></div>
+          <div class="r"><span class="k">Office</span><span class="v">518 (Chair) · 422 (Faculty)<br/>Computer Studies Bldg</span></div>
+          <div class="r"><span class="k">Phone</span><span class="v">(585) 275-1420</span></div>
+          <div class="r"><span class="k">Email</span><span class="v"><a href="mailto:selcuk.kose@rochester.edu">selcuk.kose@rochester.edu</a></span></div>
+          <div class="r"><span class="k">Scholar</span><span class="v"><a href="https://scholar.google.com/citations?user=mcHzKYYAAAAJ" target="_blank" rel="noopener">→ Google Scholar</a></span></div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="hero-foot">
+      <span><b>5</b> &nbsp;Research thrusts</span>
+      <span><b>120+</b> &nbsp;Publications</span>
+      <span><b>23</b> &nbsp;US patents</span>
+      <span><b>2</b> &nbsp;Springer books</span>
+      <span><b>NSF · DOE · DARPA · SRC</b></span>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-label="Recent updates">
+  <div class="ticker-label">Latest →</div>
+  <div class="ticker-row" id="tickerRow">
+    <!-- populated by JS -->
+  </div>
+</div>
+
+<section class="research" id="research">
+  <div class="wrap">
+    <div class="eyebrow">§ 01 — Research</div>
+    <h2>Five thrusts <i>at the boundary</i><br/>of devices and information.</h2>
+
+    <div class="thrusts">
+
+      <article class="thrust">
+        <div class="num">01</div>
+        <div>
+          <h3>Hardware Security</h3>
+          <p>Side-channel attacks, fault injection, covert channels, and integrated countermeasures. Physical unclonable functions, true random number generators, and hardware Trojans across CMOS, SFQ, and chiplet platforms.</p>
+          <div class="tagsd"><span class="ch">Side-channel</span><span class="ch">PUF · TRNG</span><span class="ch">Trojans</span></div>
+        </div>
+      </article>
+
+      <article class="thrust">
+        <div class="num">02</div>
+        <div>
+          <h3>On-Chip Power Delivery</h3>
+          <p>Distributed voltage regulators, on-chip reconfigurable DC-DC converters, decoupling capacitor allocation, and power delivery for 3-D integrated systems. Co-design of power and clock networks.</p>
+          <div class="tagsd"><span class="ch">DLDO</span><span class="ch">Switched-Cap</span><span class="ch">3D PDN</span></div>
+        </div>
+      </article>
+
+      <article class="thrust">
+        <div class="num">03</div>
+        <div>
+          <h3>Superconducting Electronics</h3>
+          <p>Single-flux-quantum logic, Suzuki stack circuits, Josephson-CMOS interfaces, and cryogenic memory. Side-channel and built-in self-test methods for SFQ designs operating at 4 K and below.</p>
+          <div class="tagsd"><span class="ch">SFQ</span><span class="ch">Suzuki Stack</span><span class="ch">Josephson-CMOS</span></div>
+        </div>
+      </article>
+
+      <article class="thrust">
+        <div class="num">04</div>
+        <div>
+          <h3>CMOS Ising Machines</h3>
+          <p>Probabilistic and oscillator-based Ising machines for combinatorial optimization, LDPC decoding, and other NP-hard problems. Sub-harmonic injection-locked oscillator arrays and multi-body interaction architectures.</p>
+          <div class="tagsd"><span class="ch">LDPC</span><span class="ch">3SAT · MaxCut</span><span class="ch">Ising-PUF</span></div>
+        </div>
+      </article>
+
+      <article class="thrust span">
+        <div class="num">05</div>
+        <div>
+          <h3>Quantum Computing</h3>
+          <p>Security and reliability of the classical-quantum interface. Side-channel leakage in qubit control and readout systems, attacks on superconductive control electronics, and protective design methodologies for next-generation quantum hardware.</p>
+          <div class="tagsd"><span class="ch">Qubit Control</span><span class="ch">Cryo Side-channel</span><span class="ch">Quantum Readout</span></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="connections" id="connections">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">§ 02 — Connections</div>
+        <h2>How the <i>thrusts</i> meet</h2>
+      </div>
+      <div class="num">Hover or tap a node</div>
+    </div>
+
+    <div class="diag-wrap">
+      <svg class="diag-svg" viewBox="0 0 500 460" id="connDiag" xmlns="http://www.w3.org/2000/svg">
+        <!-- edges -->
+        <g id="edges"></g>
+        <!-- nodes -->
+        <g id="nodes"></g>
+      </svg>
+      <div class="diag-detail" id="diagDetail">
+        <h3 id="ddTitle">Tap a node to <i>see overlaps</i></h3>
+        <p id="ddDesc">The group's five thrusts are not silos — most active projects sit on an edge between two or three. Tap a node on the diagram to see what lives at each intersection.</p>
+        <ul id="ddList"></ul>
+        <div class="hint">Lit edges = shared papers and projects</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="teaching">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">§ 03 — Teaching</div>
+        <h2>In the <i>classroom</i></h2>
+      </div>
+      <div class="num">University of Rochester</div>
+    </div>
+
+    <div class="row-list">
+      <div class="item">
+        <div class="k">ECE 4xx</div>
+        <div class="nm">Introduction to Hardware Security
+          <span class="sub">Side-channel attacks, fault injection, physical unclonable functions, true random number generators, hardware Trojans, logic locking, and countermeasure design.</span>
+        </div>
+        <div class="meta">Fall · annually</div>
+      </div>
+    </div>
+
+    <p style="margin-top:28px; font-family:var(--mono); font-size:12px; color:var(--muted); line-height:1.7">
+      Previously taught <i>Digital Logic</i> (ECE 112) and <i>Performance Issues in IC/VLSI Design</i> at Rochester, and a range of courses at the University of South Florida (2012–2019), including High Performance Integrated Circuit Design, Senior Design Project (Design II), and Introduction to Electrical Systems.
+    </p>
+  </div>
+</section>
+
+<section id="group">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">§ 04 — Group</div>
+        <h2>The <i>people</i></h2>
+      </div>
+      <div class="num">5 PhD · 5 UG · Spring 2026</div>
+    </div>
+
+    <div id="groupContent"></div>
+
+    <div class="cta-row" style="margin-top:48px">
+      <a class="cta-card" href="join.html">
+        <span class="k">For prospective students</span>
+        <h4>Joining the group</h4>
+        <p>We are actively recruiting PhD students. Here's what we look for, what a PhD here looks like, and what to send in your email.</p>
+        <span class="more">Open join page</span>
+      </a>
+      <a class="cta-card" href="publications.html">
+        <span class="k">Full bibliography</span>
+        <h4>Publications &amp; patents</h4>
+        <p>120+ papers, 23 US patents, 2 books — filter by year, thrust, venue, or student author. With BibTeX.</p>
+        <span class="more">Open publications</span>
+      </a>
+      <a class="cta-card" href="press.html">
+        <span class="k">Bio &middot; talks</span>
+        <h4>Bios, photo, invited talks</h4>
+        <p>Bios at 50, 150, and 300 words, a high-resolution photo, and a selection of recent invited talks.</p>
+        <span class="more">Open page</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="news">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">§ 05 — News</div>
+        <h2>Recent <i>updates</i></h2>
+      </div>
+    </div>
+
+    <ol class="row-list" id="newsList" style="list-style:none; padding:0; margin:0"></ol>
+  </div>
+</section>
+
+<section id="funding">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">§ 06 — Funding</div>
+        <h2>With support <i>from</i></h2>
+      </div>
+      <div class="num">2014 – present</div>
+    </div>
+
+    <div class="sponsors" id="sponsorsGrid"></div>
+  </div>
+</section>
+
+<section id="bio">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">§ 07 — Biography</div>
+        <h2>About <i>Selçuk</i></h2>
+      </div>
+    </div>
+
+    <div class="bio-grid">
+      <div class="bio">
+        <p>Selçuk Köse is Professor and Chair of the Department of Electrical and Computer Engineering at the University of Rochester. He joined Rochester as Associate Professor in 2019, became full Professor in 2024, and assumes the role of Chair in summer 2026. He previously served on the faculty of the University of South Florida (2012–2019), first as Assistant Professor and then as Associate Professor.</p>
+
+        <p>He received his BSc from Bilkent University in 2006 and his MS (2008) and PhD (2012) from the University of Rochester, all in Electrical and Computer Engineering. Industry experience includes the VLSI Design Center at TÜBİTAK (Ankara, 2006), the Central Technology and Special Circuits group in Intel's enterprise microprocessor division (Santa Clara, summers 2007 and 2008), the CMOS Image Sensors R&D Laboratory at Eastman Kodak (Rochester, 2009), and the Microwave and Mixed-Signal Laboratory at Freescale Semiconductor (Tempe, 2010).</p>
+
+        <p>His research interests include hardware security with a focus on side-channel and fault-injection attacks, covert channels, PUFs, true random number generators, and hardware Trojans; on-chip power delivery and reconfigurable voltage regulation; cryogenic electronics and quantum computing; CMOS-based Ising machines for combinatorial optimization; and 3-D integration. He has been recognized with the NSF CAREER Award (2014), USF College of Engineering Outstanding Junior Research Achievement Award (2014), USF Outstanding Faculty Award (2016), Cisco Research Awards (2015, 2016, 2017), and the USF Faculty Outstanding Research Achievement Award (2017). He serves as an associate editor for the <i>Journal of Circuits, Systems and Computers</i>, the <i>Microelectronics Journal</i>, and <i>Springer Nature Computer Science</i>, and previously for <i>IEEE TCAS-I</i>.</p>
+      </div>
+
+      <aside class="cv-card">
+        <h3>Curriculum Vitae</h3>
+        <p>Full publication list, awards, professional service, and teaching record.</p>
+        <a href="assets/selcuk_kose_cv.pdf" class="btn" target="_blank" rel="noopener">Download PDF ↓</a>
+        <div class="cv-list">
+          <div><b>PhD</b> · Univ. of Rochester, 2012</div>
+          <div><b>MS</b> · Univ. of Rochester, 2008</div>
+          <div><b>BSc</b> · Bilkent University, 2006</div>
+          <div><b>Prior</b> · USF Asst./Assoc. Prof.</div>
+          <div><b>Editor</b> · JCSC · Microelec. J.</div>
+          <div><b>Industry</b> · Intel · Kodak · Freescale</div>
+        </div>
+      </aside>
+    </div>
+
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="brand-blk">
+        <div class="b">Selçuk <i>Köse</i></div>
+        <p>Department of Electrical and Computer Engineering, Hajim School of Engineering and Applied Sciences, University of Rochester.</p>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li><a class="link" href="mailto:selcuk.kose@rochester.edu">selcuk.kose@rochester.edu</a></li>
+          <li>518 Computer Studies Building <span style="color:var(--muted)">(Chair Office)</span></li>
+          <li>422 Computer Studies Building <span style="color:var(--muted)">(Faculty Office)</span></li>
+          <li>500 Joseph C. Wilson Blvd</li>
+          <li>Rochester, NY 14627</li>
+          <li>(585) 275-1420</li>
+        </ul>
+      </div>
+      <div>
+        <h5>Elsewhere</h5>
+        <ul>
+          <li><a class="link" href="https://scholar.google.com/citations?user=mcHzKYYAAAAJ" target="_blank" rel="noopener">Google Scholar</a></li>
+          <li><a class="link" href="https://dblp.org/pid/89/3319.html" target="_blank" rel="noopener">DBLP</a></li>
+          <li><a class="link" href="https://orcid.org/0000-0001-8095-6691" target="_blank" rel="noopener">ORCID</a></li>
+          <li><a class="link" href="https://www.linkedin.com/in/selcukkose/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a class="link" href="assets/selcuk_kose_cv.pdf" target="_blank" rel="noopener">CV (PDF)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="colophon">
+      <span>© 2026 · Köse Research Group · University of Rochester</span>
+      <span>Updated May 2026</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+/* Bio + group + sponsors specific styles */
+.bio-grid{ display:grid; gap:48px; grid-template-columns:1fr }
+@media(min-width:900px){ .bio-grid{ grid-template-columns:1.2fr 1fr; gap:80px } }
+.bio p{ font-size:17px; line-height:1.65; color:var(--ink-2); margin:0 0 18px; max-width:62ch }
+.bio p:first-child::first-letter{
+  font-family:var(--serif); font-size:56px; line-height:.85;
+  float:left; padding:6px 10px 0 0; color:var(--ink);
+}
+.cv-card{ border:1px solid var(--ink); padding:28px; background:var(--paper) }
+.cv-card h3{ font-family:var(--serif); font-weight:400; font-size:28px; margin:0 0 6px }
+.cv-card p{ font-size:14px; color:var(--ink-2); margin:0 0 22px }
+.cv-list{ margin-top:24px; padding-top:20px; border-top:1px solid var(--hair); font-family:var(--mono); font-size:12px; line-height:2; color:var(--ink-2) }
+.cv-list b{ color:var(--ink); font-weight:500 }
+
+.collabs{ margin-top:64px; padding-top:32px; border-top:1px solid var(--hair) }
+.collabs h3{ font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin:0 0 20px }
+.collabs ul{ list-style:none; padding:0; margin:0; display:grid; gap:8px }
+@media(min-width:680px){ .collabs ul{ grid-template-columns:1fr 1fr; column-gap:48px } }
+.collabs li{
+  display:flex; justify-content:space-between; gap:18px;
+  padding:8px 0; border-bottom:1px dotted var(--hair);
+  font-size:14.5px; align-items:baseline;
+}
+.collabs li .nm{ font-family:var(--serif); font-size:17px }
+.collabs li .af{ font-family:var(--mono); font-size:10.5px; color:var(--muted); letter-spacing:.04em; text-align:right }
+
+.group-sub{
+  font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--muted); margin:48px 0 20px;
+  display:flex; align-items:center; gap:14px;
+}
+.group-sub::after{ content:""; flex:1; height:1px; background:var(--hair) }
+.people{ display:grid; gap:32px; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)) }
+.person{ display:flex; flex-direction:column }
+.avatar{
+  aspect-ratio: 4/5;
+  background:linear-gradient(135deg, #e7e3d4 0%, #c9c4b1 100%);
+  position:relative; overflow:hidden; border:1px solid var(--hair);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--serif); font-size:62px; color:#9c9683;
+}
+.avatar::after{
+  content:""; position:absolute; inset:0;
+  background-image:radial-gradient(circle at 30% 30%, rgba(255,255,255,.4), transparent 50%);
+  pointer-events:none;
+}
+.avatar .flag{
+  position:absolute; bottom:8px; right:8px;
+  width:26px; height:auto; border:1px solid rgba(0,0,0,.15);
+  box-shadow:0 1px 4px rgba(0,0,0,.2); border-radius:1px;
+}
+.person h4{ font-family:var(--serif); font-weight:400; font-size:21px; margin:14px 0 4px; line-height:1.2 }
+.person .role{ font-family:var(--mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted) }
+.person .focus{ font-size:13.5px; color:var(--ink-2); margin-top:8px; line-height:1.5 }
+.ug{ display:grid; gap:0; grid-template-columns:1fr; border:1px solid var(--hair); background:#fdfcf8; margin-top:8px }
+@media(min-width:600px){ .ug{ grid-template-columns:1fr 1fr } }
+@media(min-width:900px){ .ug{ grid-template-columns:1fr 1fr 1fr } }
+.ug-row{ display:flex; align-items:center; gap:14px; padding:18px 20px; border-right:1px solid var(--hair); border-bottom:1px solid var(--hair) }
+.ug-row img{ width:24px; height:auto; border:1px solid rgba(0,0,0,.1); flex-shrink:0 }
+.ug-row .nm{ font-family:var(--serif); font-size:18px; line-height:1.2 }
+.ug-row .nt{ font-family:var(--mono); font-size:9.5px; letter-spacing:.14em; color:var(--muted); text-transform:uppercase; margin-top:2px }
+.ug-row .col{ flex:1; min-width:0 }
+
+.gallery{ display:grid; gap:18px; grid-template-columns:1fr; align-items:start }
+@media(min-width:520px){ .gallery{ grid-template-columns:1fr 1fr } }
+@media(min-width:840px){ .gallery{ grid-template-columns:repeat(3,1fr) } }
+.gallery figure{ margin:0; border:1px solid var(--hair); background:#fdfcf8 }
+.gallery .ph{ overflow:hidden; background:#e7e3d4; line-height:0 }
+.gallery img{ width:100%; height:auto; display:block; transition:transform .6s ease }
+.gallery figure:hover img{ transform:scale(1.045) }
+.gallery figcaption{ display:flex; align-items:baseline; justify-content:space-between; gap:10px; padding:12px 15px }
+.gallery .cap{ font-family:var(--serif); font-size:17px; line-height:1.2 }
+.gallery .when{ font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); white-space:nowrap }
+
+.sponsors{
+  display:grid; gap:0;
+  grid-template-columns:repeat(2, 1fr);
+  border:1px solid var(--hair); background:#fdfcf8;
+}
+@media(min-width:560px){ .sponsors{ grid-template-columns:repeat(3, 1fr) } }
+@media(min-width:900px){ .sponsors{ grid-template-columns:repeat(4, 1fr) } }
+.sponsor{
+  padding:32px 20px;
+  border-right:1px solid var(--hair); border-bottom:1px solid var(--hair);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;
+  text-align:center; transition:background .2s;
+}
+.sponsor:hover{ background:var(--paper) }
+.sponsor .name{ font-family:var(--serif); font-size:24px; line-height:1 }
+.sponsor .kind{ font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted) }
+</style>
+
+<script src="assets/site.js"></script>
+<script src="assets/data.js"></script>
+<script src="assets/home.js"></script>
+<script src="assets/hero-live.js"></script>
+
+</body>
+</html>

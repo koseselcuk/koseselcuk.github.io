@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en" data-page="press">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bio · Talks · Köse Group</title>
+<meta name="description" content="Bio for Prof. Selçuk Köse at 50, 150, and 300 words, a high-resolution photo, and a selection of recent invited talks." />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23003B71'/%3E%3Ctext x='50' y='76' font-family='Georgia,serif' font-style='italic' font-size='78' fill='white' text-anchor='middle'%3EK%3C/text%3E%3Crect y='90' width='100' height='10' fill='%23FFD100'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/theme.js"></script>
+<style>
+.press-grid{
+  display:grid; gap:48px;
+  grid-template-columns:1fr;
+}
+@media(min-width:900px){ .press-grid{ grid-template-columns: 1fr 320px; gap:64px } }
+
+.bio-block{
+  border:1px solid var(--hair); background:#fdfcf8;
+  margin-bottom:24px;
+}
+.bio-block .head{
+  display:flex; justify-content:space-between; align-items:baseline;
+  padding:18px 24px;
+  border-bottom:1px solid var(--hair);
+  background:var(--paper);
+}
+.bio-block .head h3{
+  font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--muted); margin:0;
+}
+.bio-block .head .copy{
+  font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase;
+  background:transparent; color:var(--ink); border:1px solid var(--ink); padding:6px 12px;
+  cursor:pointer; transition:all .15s;
+}
+.bio-block .head .copy:hover{ background:var(--ink); color:var(--paper) }
+.bio-block .body{
+  padding:24px;
+  font-family:var(--serif); font-size:18px; line-height:1.6; color:var(--ink-2);
+}
+.bio-block .body p{ margin:0 0 14px }
+.bio-block .body p:last-child{ margin:0 }
+
+.photo-card{
+  border:1px solid var(--ink); background:var(--paper); padding:20px;
+}
+.photo-card .photo{
+  aspect-ratio:4/5; background-image:url("assets/selcuk_kose.jpg");
+  background-size:cover; background-position:center 20%;
+  border:1px solid var(--hair); margin-bottom:16px;
+}
+.photo-card .meta{ font-family:var(--mono); font-size:11px; line-height:1.7; color:var(--ink-2); letter-spacing:.04em }
+.photo-card .meta b{ color:var(--ink); font-weight:500 }
+.photo-card a.btn{ margin-top:14px; width:100% }
+
+.talk-list{ border-top:1px solid var(--ink) }
+.talk-row{
+  display:grid; grid-template-columns: 100px 1fr auto;
+  gap:24px; padding:18px 0;
+  border-bottom:1px solid var(--hair); align-items:baseline;
+}
+.talk-row .yr{ font-family:var(--mono); font-size:12px; color:var(--muted); letter-spacing:.06em }
+.talk-row .ttl{ font-family:var(--serif); font-size:19px; line-height:1.35 }
+.talk-row .ttl .sub{ display:block; font-family:var(--sans); font-size:13.5px; color:var(--ink-2); margin-top:4px; line-height:1.5 }
+.talk-row .loc{ font-family:var(--mono); font-size:11px; letter-spacing:.06em; color:var(--muted); white-space:nowrap; text-align:right }
+@media(max-width:680px){
+  .talk-row{ grid-template-columns: 70px 1fr }
+  .talk-row .loc{ grid-column:2; margin-top:4px; text-align:left }
+}
+
+.facts{
+  display:grid; gap:0;
+  grid-template-columns:1fr 1fr;
+  border:1px solid var(--hair); background:#fdfcf8;
+  margin-top:24px;
+}
+@media(min-width:760px){ .facts{ grid-template-columns:repeat(4,1fr) } }
+.fact{
+  padding:24px 18px; text-align:center;
+  border-right:1px solid var(--hair); border-bottom:1px solid var(--hair);
+}
+.fact .n{ font-family:var(--serif); font-size:32px; line-height:1 }
+.fact .l{ font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin-top:8px }
+
+.copied-toast{
+  position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(20px);
+  background:var(--ink); color:var(--paper); padding:12px 22px;
+  font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  opacity:0; pointer-events:none; transition:all .25s;
+  z-index:100;
+}
+.copied-toast.in{ opacity:1; transform:translateX(-50%) translateY(0) }
+</style>
+</head>
+<body>
+
+<div data-chrome="nav" data-base=""></div>
+
+<section class="page-head">
+  <div class="wrap reveal">
+    <div class="crumbs"><a href="index.html">Home</a> &nbsp;/&nbsp; <span style="color:var(--ink)">Bio · Talks</span></div>
+    <h1>Bio &amp; <i>talks.</i></h1>
+    <p class="lede">Bios at three lengths, a high-resolution photo, and a selection of recent invited talks.</p>
+
+    <div class="facts">
+      <div class="fact"><div class="n">2014</div><div class="l">NSF CAREER</div></div>
+      <div class="fact"><div class="n">23</div><div class="l">US patents</div></div>
+      <div class="fact"><div class="n">120+</div><div class="l">Papers</div></div>
+      <div class="fact"><div class="n">7</div><div class="l">PhD alumni</div></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="press-grid">
+      <div>
+
+        <h2 style="font-family:var(--serif); font-weight:400; font-size:clamp(28px,3.5vw,40px); line-height:1.1; margin:0 0 16px">Bios <i style="color:var(--accent)">in three lengths</i></h2>
+        <p style="font-family:var(--mono); font-size:11px; letter-spacing:.14em; color:var(--muted); margin:0 0 28px; text-transform:uppercase">Click "Copy" to grab plain text</p>
+
+        <div class="bio-block">
+          <div class="head">
+            <h3>50 words — talk intro</h3>
+            <button class="copy" data-target="bio50">Copy</button>
+          </div>
+          <div class="body" id="bio50">
+            <p>Selçuk Köse is a Professor of Electrical and Computer Engineering at the University of Rochester. His research spans hardware security, on-chip power delivery, superconducting electronics, CMOS Ising machines, and quantum computing. He holds the NSF CAREER Award and 23 US patents.</p>
+          </div>
+        </div>
+
+        <div class="bio-block">
+          <div class="head">
+            <h3>150 words — conference program</h3>
+            <button class="copy" data-target="bio150">Copy</button>
+          </div>
+          <div class="body" id="bio150">
+            <p>Selçuk Köse is a Professor in the Department of Electrical and Computer Engineering at the University of Rochester, which he joined in 2019. He previously served on the faculty of the University of South Florida (2012–2019). He received his BSc from Bilkent University in 2006 and his MS and PhD from Rochester in 2008 and 2012, with industry experience at Intel, Eastman Kodak, and Freescale.</p>
+            <p>His research interests include hardware security, on-chip power delivery, superconducting electronics, CMOS-based Ising machines, and the security of the classical-quantum interface. He has been recognized with the NSF CAREER Award and multiple Cisco Research Awards, and serves as associate editor for several IEEE and Springer journals. He will assume the role of ECE Department Chair at Rochester in summer 2026.</p>
+          </div>
+        </div>
+
+        <div class="bio-block">
+          <div class="head">
+            <h3>300 words — full</h3>
+            <button class="copy" data-target="bio300">Copy</button>
+          </div>
+          <div class="body" id="bio300">
+            <p>Selçuk Köse is a Professor in the Department of Electrical and Computer Engineering at the University of Rochester, which he joined as Associate Professor in 2019 and where he became full Professor in 2024. He previously served on the faculty of the University of South Florida (2012–2019), first as Assistant and then as Associate Professor. He will assume the role of ECE Department Chair at Rochester in summer 2026.</p>
+            <p>He received his BSc from Bilkent University in 2006 and his MS (2008) and PhD (2012) from the University of Rochester, all in Electrical and Computer Engineering. Industry experience includes the VLSI Design Center at TÜBİTAK, the Central Technology and Special Circuits group in Intel's enterprise microprocessor division, the CMOS Image Sensors R&D Laboratory at Eastman Kodak, and the Microwave and Mixed-Signal Laboratory at Freescale Semiconductor.</p>
+            <p>His research interests include hardware security (side-channel and fault-injection attacks, covert channels, PUFs, TRNGs, hardware Trojans), on-chip power delivery and reconfigurable voltage regulation, cryogenic and superconducting electronics, CMOS-based Ising machines for combinatorial optimization, and the security and reliability of the classical-quantum interface. His work is supported by NSF, DOE, DARPA, SRC, and industry partners including Cisco.</p>
+            <p>Honors include the NSF CAREER Award (2014), three Cisco Research Awards (2015–17), and the USF Faculty Outstanding Research Achievement Award (2017). He serves as associate editor for the Journal of Circuits, Systems and Computers, the Microelectronics Journal, and Springer Nature Computer Science, and previously for IEEE TCAS-I. He holds 23 US patents and has co-authored two Springer books.</p>
+          </div>
+        </div>
+
+        <h2 style="font-family:var(--serif); font-weight:400; font-size:clamp(28px,3.5vw,40px); line-height:1.1; margin:64px 0 24px">Recent invited <i style="color:var(--accent)">talks</i></h2>
+
+        <div class="talk-list">
+          <div class="talk-row">
+            <div class="yr">2025 · Q4</div>
+            <div class="ttl">Side-channel security at the classical-quantum interface
+              <span class="sub">Invited seminar, host institution TBA — series on quantum-era system security.</span>
+            </div>
+            <div class="loc">Seminar</div>
+          </div>
+          <div class="talk-row">
+            <div class="yr">2025 · 05</div>
+            <div class="ttl">Energy-efficient CMOS Ising machines for combinatorial optimization
+              <span class="sub">ISCAS 2025 special session on probabilistic and physics-inspired computing.</span>
+            </div>
+            <div class="loc">ISCAS · London</div>
+          </div>
+          <div class="talk-row">
+            <div class="yr">2024 · 11</div>
+            <div class="ttl">Interfacing superconductor and semiconductor digital electronics
+              <span class="sub">Tutorial at an SFQ workshop on the design challenges of mixed-temperature digital systems.</span>
+            </div>
+            <div class="loc">Workshop</div>
+          </div>
+        </div>
+
+        <p style="margin-top:32px; font-family:var(--mono); font-size:12px; color:var(--muted); line-height:1.7">
+          Available for keynotes, tutorials, and panel discussions on hardware security, energy-efficient computing, and quantum-era electronics. For booking, see the contact card.
+        </p>
+      </div>
+
+      <aside style="display:flex; flex-direction:column; gap:24px">
+        <div class="photo-card">
+          <div class="photo" role="img" aria-label="Portrait of Selçuk Köse"></div>
+          <div class="meta">
+            <div><b>Subject</b> Selçuk Köse</div>
+            <div><b>Credit</b> Univ. of Rochester</div>
+            <div><b>Size</b> 760 × 950 px</div>
+            <div><b>Use</b> Editorial / program</div>
+          </div>
+          <a href="assets/selcuk_kose.jpg" download="selcuk_kose.jpg" class="btn">Download photo ↓</a>
+        </div>
+
+        <div class="card ink" style="border:1px solid var(--ink); background:var(--paper); padding:24px">
+          <h4 style="font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin:0 0 14px">Booking</h4>
+          <div style="font-family:var(--serif); font-size:20px; line-height:1.35; margin-bottom:14px">For talks, interviews, and media inquiries, email directly.</div>
+          <a href="mailto:selcuk.kose@rochester.edu?subject=Speaking%20inquiry" class="btn" style="width:100%">selcuk.kose@rochester.edu</a>
+        </div>
+
+        <div class="card" style="border:1px solid var(--hair); background:#fdfcf8; padding:24px">
+          <h4 style="font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin:0 0 14px">Quick facts</h4>
+          <ul style="list-style:none; padding:0; margin:0; font-family:var(--mono); font-size:12px; line-height:2; color:var(--ink-2)">
+            <li><b style="color:var(--ink)">Title</b> &nbsp;Professor, ECE</li>
+            <li><b style="color:var(--ink)">School</b> &nbsp;Hajim, U. of Rochester</li>
+            <li><b style="color:var(--ink)">Joined UR</b> &nbsp;2019 (Assoc. → Full 2024)</li>
+            <li><b style="color:var(--ink)">Chair</b> &nbsp;ECE Department, 2026 →</li>
+            <li><b style="color:var(--ink)">Scholar</b> &nbsp;<a class="link" href="https://scholar.google.com/citations?user=mcHzKYYAAAAJ" target="_blank" rel="noopener">→ link</a></li>
+            <li><b style="color:var(--ink)">ORCID</b> &nbsp;0000-0001-8095-6691</li>
+          </ul>
+        </div>
+
+        <div class="card" style="border:1px solid var(--hair); background:#fdfcf8; padding:24px">
+          <h4 style="font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin:0 0 14px">CV</h4>
+          <a href="assets/selcuk_kose_cv.pdf" target="_blank" rel="noopener" class="btn ghost" style="width:100%">Full CV (PDF)</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<div class="copied-toast" id="toast">Copied to clipboard ✓</div>
+
+<div data-chrome="footer" data-base=""></div>
+
+<script src="assets/data.js"></script>
+<script src="assets/chrome.js"></script>
+<script>
+document.querySelectorAll('.copy[data-target]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const id = btn.getAttribute('data-target');
+    const el = document.getElementById(id);
+    if(!el) return;
+    const text = el.innerText.trim();
+    if(navigator.clipboard) navigator.clipboard.writeText(text);
+    const t = document.getElementById('toast');
+    t.classList.add('in');
+    setTimeout(() => t.classList.remove('in'), 1500);
+  });
+});
+</script>
+</body>
+</html>
